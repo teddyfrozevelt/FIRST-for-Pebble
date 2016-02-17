@@ -3,7 +3,7 @@
     "capabilities": [
         ""
     ],
-    "companyName": "owen.daprile@gmail.com",
+    "companyName": "Owen D'Aprile",
     "longName": "FIRST for Pebble",
     "projectType": "pebblejs",
     "resources": {
@@ -39,7 +39,7 @@
     ],
     "uuid": "2d687ea1-e2a2-4991-b7c3-c977688c4dae",
     "versionCode": 1,
-    "versionLabel": "1.0",
+    "versionLabel": "0.1",
     "watchapp": {
         "hiddenApp": false,
         "watchface": false
