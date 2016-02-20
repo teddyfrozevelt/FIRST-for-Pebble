@@ -1,7 +1,6 @@
 var UI = require('ui');
 var ajax = require('ajax');
 var Settings = require('settings');
-var teamURL;
 Settings.data('teamInfo', {nickname: '', locality: '', region: '', motto: ''});
 var teamInfo = Settings.data('teamInfo');
 
@@ -17,18 +16,15 @@ if(teamNumber === undefined) {
   ajax ({
       url: 'www.thebluealliance.com/api/v2/team/frc' + teamNumber,
       type: 'json',
-      headers: { 'X-TBA-App-Id': 'frc548_owendaprile:FIRST_for_Pebble:v01' }
+      headers: { 'X-TBA-App-Id': 'frc548:FIRST-for-Pebble:v0-1' }
     },
       function(data) {
-        teamInfo.nickname = data.nickname;
-        teamInfo.locality = data.locality;
-        teamInfo.region = data.region;
-        teamInfo.motto = data.motto;
+        Settings.data('teamInfo', {nickname: data.nickname, locality: data.locality, region: data.region, motto: data.motto});
+        teamInfo = Settings.data('teamInfo');
       },
       function(error) {
         console.log('Error retrieving team information: ' + error);
-  })
-  
+  });
 }
 console.log('teamNumber is: ' + teamNumber);
 
@@ -45,13 +41,11 @@ Pebble.addEventListener('webviewclosed', function(e) {
   ajax ({
     url: 'www.thebluealliance.com/api/v2/team/frc' + teamNumber,
     type: 'json',
-    headers: { 'X-TBA-App-Id': 'frc548_owendaprile:FIRST_for_Pebble:v01' }
+    headers: { 'X-TBA-App-Id': 'frc548:FIRST-for-Pebble:v0-1' }
   },
       function(data) {
-      teamInfo.nickname = data.nickname;
-      teamInfo.locality = data.locality;
-      teamInfo.region = data.region;
-      teamInfo.motto = data.motto;
+        Settings.data('teamInfo', {nickname: data.nickname, locality: data.locality, region: data.region, motto: data.motto});
+        teamInfo = Settings.data('teamInfo');
     },
       function(error) {
         console.log('Error retrieving team information: ' + error);
